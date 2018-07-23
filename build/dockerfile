@@ -1,0 +1,6 @@
+FROM {{ BASEIMAGE }}
+MAINTAINER {{ AUTHOR }}
+LABEL Author={{ AUTHOR }} Name={{ PROJECT }} Version={{ VERSION }}
+RUN mkdir -p /app/www/vuetifyjs
+ADD ./build/conf.json /etc/proxy/conf.json
+ADD ./dist /app/www/vuetifyjs

@@ -1,0 +1,10 @@
+{
+  "index": "index.html",
+  "login": "/iam/login.html",
+  "logout": "/iam/saml/logout",
+  "apps": [
+    {
+      "url": "/vuetifyjs"
+    }
+  ]
+}
