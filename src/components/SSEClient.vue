@@ -17,9 +17,11 @@
 </template>
 
 <script>
+let Base64 = require('js-base64').Base64;
+
 export default {
   data: () => ({
-    stockData: null
+    stockData: []
   }),
   props: {
     source: String
@@ -31,10 +33,11 @@ export default {
         setupStream() {
             // Not a real URL, just using for demo purposes
             let es = new EventSource('http://localhost:8090/gostream/stream/events');
+            let app = this;
 
             es.addEventListener('message', event => {
-                let data = JSON.parse(event.data);
-                this.stockData = data.stockData;
+                let data = JSON.parse(Base64.decode(event.data));
+                app.stockData.push(data);
             }, false);
 
             es.addEventListener('error', event => {
